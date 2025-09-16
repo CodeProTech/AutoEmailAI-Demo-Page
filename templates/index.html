@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoEmailAI - Notify Me When Available</title>
+    <meta name="description" content="Get notified when AutoEmailAI launches - Intelligent Email Automation Platform">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(243, 244, 246, 0.6);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1E3A8A;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #14B8A6;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(20, 184, 166, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #374151;
+            padding: 12px 24px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #14B8A6;
+            color: #14B8A6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.2);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Hero Section - Notify Me */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 70%);
+            overflow: hidden;
+            padding: 120px 0 60px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(124, 58, 237, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element.element-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element.element-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element.element-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-element.element-4 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+
+        .floating-element.element-5 {
+            width: 90px;
+            height: 90px;
+            bottom: 30%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+            width: fit-content;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1E3A8A;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-value-props {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .value-prop {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        .value-prop i {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-primary,
+        .hero-secondary {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        /* Notify Form */
+        .notify-form-container {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E5E7EB;
+            position: relative;
+        }
+
+        .notify-form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .notify-form-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+        }
+
+        .notify-form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .notify-form-header p {
+            color: #6B7280;
+            font-size: 1.1rem;
+        }
+
+        .notify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #9CA3AF;
+            z-index: 2;
+            font-size: 1rem;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem 1rem 3.5rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: #374151;
+            font-family: inherit;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #14B8A6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #9CA3AF;
+        }
+
+        .early-access-info {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(124, 58, 237, 0.05));
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .early-access-info h4 {
+            color: #1E3A8A;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .early-access-info ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .early-access-info li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .early-access-info li i {
+            color: #10B981;
+            font-size: 0.9rem;
+            width: 16px;
+        }
+
+        .launch-timeline {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .launch-timeline h4 {
+            color: #1E3A8A;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .launch-timeline p {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading .btn-primary {
+            background: #9CA3AF;
+        }
+
+        .loading .btn-primary::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Features Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(124, 58, 237, 0.1));
+            color: #7C3AED;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6B7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #14B8A6;
+        }
+
+        .feature-card.featured {
+            border-color: #7C3AED;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .feature-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: linear-gradient(135deg, #7C3AED, #9333EA);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #374151;
+        }
+
+        .feature-list i {
+            color: #10B981;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-visual {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #7C3AED, #9333EA);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -3px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #7C3AED;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #6B7280;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .step-features {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .step-features span {
+            background: rgba(20, 184, 166, 0.1);
+            color: #0F766E;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-rating i {
+            color: #F59E0B;
+            font-size: 1rem;
+        }
+
+        .testimonial-card p {
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info strong {
+            display: block;
+            color: #1E3A8A;
+            font-weight: 600;
+        }
+
+        .author-info span {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .notify-form-container {
+                padding: 2rem;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .step-connector {
+                width: 2px;
+                height: 60px;
+                transform: rotate(90deg);
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Footer responsive fix */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-brand {
+                margin-bottom: 2rem;
+            }
+
+            .footer-links {
+                display: flex;
+                justify-content: center;
+                gap: 3rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 0 40px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .notify-form-container {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            /* Footer mobile optimization */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer {
+                padding: 40px 0 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .cta-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #14B8A6;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: #14B8A6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #7C3AED;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #1E3A8A, #312E81);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #14B8A6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 30px;
+            background: #1F2937;
+            color: white;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            margin-top: 1rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #9CA3AF;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #14B8A6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9CA3AF;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <span class="logo-text">AutoEmailAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="mailto:info@autoemailai.com" class="btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Notify Me -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+            <div class="floating-element element-4"></div>
+            <div class="floating-element element-5"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>Coming Soon - Get Notified First</span>
+                </div>
+                <h1 class="hero-title">
+                    The Future of <span class="gradient-text">Email Automation</span><br>
+                    is Almost Here
+                </h1>
+                <p class="hero-subtitle">
+                    AutoEmailAI is revolutionizing how businesses handle email communication. Be the first to know when we launch and get exclusive early access to our AI-powered email automation platform.
+                </p>
+
+                <div class="hero-value-props">
+                    <div class="value-prop">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>Save 15+ hours weekly</strong> with intelligent automation</span>
+                    </div>
+                    <div class="value-prop">
+                        <i class="fas fa-brain"></i>
+                        <span><strong>AI-powered responses</strong> in 30+ languages</span>
+                    </div>
+                    <div class="value-prop">
+                        <i class="fas fa-shield-alt"></i>
+                        <span><strong>Enterprise-grade security</strong> and GDPR compliance</span>
+                    </div>
+                    <div class="value-prop">
+                        <i class="fas fa-zap"></i>
+                        <span><strong>Zero training required</strong> - works out of the box</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#notify-form" class="btn-primary btn-large hero-primary">
+                        <span>Get Notified at Launch</span>
+                        <i class="fas fa-bell"></i>
+                    </a>
+                    <a href="#features" class="btn-secondary btn-large hero-secondary">
+                        <i class="fas fa-eye"></i>
+                        <span>Explore Features</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="notify-form-container" id="notify-form">
+                <div class="notify-form-header">
+                    <div class="notify-form-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h2>Get Early Access</h2>
+                    <p>Join our exclusive waitlist and be among the first to experience AutoEmailAI</p>
+                </div>
+
+                <form class="notify-form" id="notifyForm">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-building"></i>
+                            <input type="text" id="company" name="company" placeholder="Your Company Inc.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Your Role</label>
+                        <div class="input-group">
+                            <i class="fas fa-briefcase"></i>
+                            <select id="role" name="role">
+                                <option value="">Select your role</option>
+                                <option value="ceo">CEO/Founder</option>
+                                <option value="cto">CTO/Technical Lead</option>
+                                <option value="operations">Operations Manager</option>
+                                <option value="customer-success">Customer Success</option>
+                                <option value="sales">Sales Manager</option>
+                                <option value="marketing">Marketing Manager</option>
+                                <option value="it">IT Administrator</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">What interests you most?</label>
+                        <div class="input-group">
+                            <i class="fas fa-heart"></i>
+                            <select id="interest" name="interest">
+                                <option value="">Select primary interest</option>
+                                <option value="save-time">Save time on email responses</option>
+                                <option value="24-7-support">24/7 automated customer support</option>
+                                <option value="multilingual">Multi-language support</option>
+                                <option value="integration">Email system integration</option>
+                                <option value="analytics">Email performance analytics</option>
+                                <option value="security">Enterprise security features</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="early-access-info">
+                        <h4><i class="fas fa-star"></i> Early Access Benefits:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10% discount on first month subscription</li>
+                            <li><i class="fas fa-check"></i> Direct line to our development team</li>
+                            <li><i class="fas fa-check"></i> Exclusive beta features access</li>
+                            <li><i class="fas fa-check"></i> Priority customer support for life</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full btn-large">
+                        <i class="fas fa-bell"></i>
+                        <span>Notify Me at Launch</span>
+                    </button>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>You're on the List!</h3>
+                        <p>Thank you for your interest! We'll notify you as soon as AutoEmailAI is ready. Keep an eye on your inbox for exclusive updates.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Powerful Features</span>
+                </div>
+                <h2>Everything you need for email automation</h2>
+                <p>Discover how AutoEmailAI revolutionizes your email workflow with cutting-edge AI technology</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card featured">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Secure Email Integration</h3>
+                    <p>Seamless connection to Gmail, Outlook, and all major email providers with enterprise-grade security and OAuth authentication.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> IMAP/SMTP Support</li>
+                        <li><i class="fas fa-check"></i> OAuth 2.0 Security</li>
+                        <li><i class="fas fa-check"></i> End-to-End Encryption</li>
+                        <li><i class="fas fa-check"></i> Multi-Account Management</li>
+                    </ul>
+
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Responses</h3>
+                    <p>Advanced ChatGPT integration analyzes context and generates professional, tailored responses based on your company knowledge.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Context-Aware Replies</li>
+                        <li><i class="fas fa-check"></i> Learning AI System</li>
+                        <li><i class="fas fa-check"></i> Customizable Tone</li>
+                        <li><i class="fas fa-check"></i> Brand Voice Matching</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Smart Knowledge Base</h3>
+                    <p>Upload documents or let our AI crawl your website for precise answers based on your company's unique knowledge.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> PDF/Word Upload</li>
+                        <li><i class="fas fa-check"></i> Website Crawling</li>
+                        <li><i class="fas fa-check"></i> CRM Integration</li>
+                        <li><i class="fas fa-check"></i> Real-time Updates</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Multi-Language Support</h3>
+                    <p>Automatic language detection and responses in 30+ languages for seamless global communication.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 30+ Languages</li>
+                        <li><i class="fas fa-check"></i> Auto-Detection</li>
+                        <li><i class="fas fa-check"></i> Cultural Adaptation</li>
+                        <li><i class="fas fa-check"></i> Regional Preferences</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Detailed insights into your email performance with real-time dashboards and comprehensive reporting.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Real-time Dashboard</li>
+                        <li><i class="fas fa-check"></i> Performance Metrics</li>
+                        <li><i class="fas fa-check"></i> ROI Tracking</li>
+                        <li><i class="fas fa-check"></i> Custom Reports</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>GDPR compliant, HIPAA certified with the highest security standards to protect your sensitive data.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> GDPR Compliance</li>
+                        <li><i class="fas fa-check"></i> HIPAA Certification</li>
+                        <li><i class="fas fa-check"></i> SOC 2 Standard</li>
+                        <li><i class="fas fa-check"></i> Regular Audits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-cogs"></i>
+                    <span>Simple Process</span>
+                </div>
+                <h2>Get started in 3 simple steps</h2>
+                <p>From setup to automation in minutes - no technical expertise required</p>
+            </div>
+            <div class="steps-container">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-visual">
+                            <div class="step-number">1</div>
+                            <div class="step-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Connect Your Email</h3>
+                            <p>Secure connection to your email accounts in just a few clicks with OAuth authentication</p>
+                            <div class="step-features">
+                                <span>Gmail</span>
+                                <span>Outlook</span>
+                                <span>Custom SMTP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step">
+                        <div class="step-visual">
+                            <div class="step-number">2</div>
+                            <div class="step-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Build Knowledge Base</h3>
+                            <p>Upload your documents or enable automatic website crawling to train the AI</p>
+                            <div class="step-features">
+                                <span>PDF Upload</span>
+                                <span>Website Crawl</span>
+                                <span>CRM Sync</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step">
+                        <div class="step-visual">
+                            <div class="step-number">3</div>
+                            <div class="step-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Activate AI Automation</h3>
+                            <p>Sit back and relax - our AI takes over your email communication intelligently</p>
+                            <div class="step-features">
+                                <span>Auto-Reply</span>
+                                <span>Smart Routing</span>
+                                <span>24/7 Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--    &lt;!&ndash; Pricing Preview Section &ndash;&gt;-->
+<!--    <section id="pricing-preview" class="pricing-preview">-->
+<!--        <div class="container">-->
+<!--            <div class="section-header">-->
+<!--                <div class="section-badge">-->
+<!--                    <i class="fas fa-tag"></i>-->
+<!--                    <span>Flexible Pricing</span>-->
+<!--                </div>-->
+<!--                <h2>Choose the plan that fits your needs</h2>-->
+<!--                <p>Simple, transparent pricing with no hidden fees - cancel anytime</p>-->
+<!--            </div>-->
+<!--            <div class="pricing-cards">-->
+<!--                <div class="pricing-card">-->
+<!--                    <div class="pricing-tier">Starter</div>-->
+<!--                    <div class="pricing-price">$19<span class="pricing-period">/month</span></div>-->
+<!--                    <div class="pricing-content">-->
+<!--                        <ul class="pricing-features">-->
+<!--                            <li><i class="fas fa-check"></i> Up to 500 emails/month</li>-->
+<!--                            <li><i class="fas fa-check"></i> Basic AI responses</li>-->
+<!--                            <li><i class="fas fa-check"></i> Email support</li>-->
+<!--                            <li><i class="fas fa-check"></i> 2 email accounts</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="pricing-button-container">-->
+<!--                        <div class="coming-soon-badge">Coming Soon</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="pricing-card featured">-->
+<!--                    <div class="pricing-badge">Most Popular</div>-->
+<!--                    <div class="pricing-tier">Professional</div>-->
+<!--                    <div class="pricing-price">$49<span class="pricing-period">/month</span></div>-->
+<!--                    <div class="pricing-content">-->
+<!--                        <ul class="pricing-features">-->
+<!--                            <li><i class="fas fa-check"></i> Up to 2,000 emails/month</li>-->
+<!--                            <li><i class="fas fa-check"></i> Advanced AI with learning</li>-->
+<!--                            <li><i class="fas fa-check"></i> Priority support</li>-->
+<!--                            <li><i class="fas fa-check"></i> 10 email accounts</li>-->
+<!--                            <li><i class="fas fa-check"></i> Custom knowledge base</li>-->
+<!--                            <li><i class="fas fa-check"></i> Analytics dashboard</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="pricing-button-container">-->
+<!--                        <div class="coming-soon-badge">Coming Soon</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="pricing-card">-->
+<!--                    <div class="pricing-tier">Enterprise</div>-->
+<!--                    <div class="pricing-price">$149<span class="pricing-period">/month</span></div>-->
+<!--                    <div class="pricing-content">-->
+<!--                        <ul class="pricing-features">-->
+<!--                            <li><i class="fas fa-check"></i> Unlimited emails</li>-->
+<!--                            <li><i class="fas fa-check"></i> Custom AI training</li>-->
+<!--                            <li><i class="fas fa-check"></i> Dedicated support</li>-->
+<!--                            <li><i class="fas fa-check"></i> Unlimited accounts</li>-->
+<!--                            <li><i class="fas fa-check"></i> White-label option</li>-->
+<!--                            <li><i class="fas fa-check"></i> API access</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="pricing-button-container">-->
+<!--                        <div class="coming-soon-badge">Coming Soon</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <!-- Industries Section -->
+    <section id="industries" class="industries">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-building"></i>
+                    <span>Industry Solutions</span>
+                </div>
+                <h2>Matches to your industries</h2>
+                <p>AutoEmailAI adapts to your industry's unique communication needs</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>E-Commerce</h3>
+                    <p>Automate order confirmations, shipping updates, and customer support with AI that understands your products and policies.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>SaaS & Tech</h3>
+                    <p>Handle user onboarding, feature announcements, and technical support with intelligent responses that scale with your growth.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Consulting</h3>
+                    <p>Manage client communications, project updates, and scheduling with professional AI responses tailored to your expertise.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Streamline student inquiries, course information, and administrative communications with multilingual AI support.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare</h3>
+                    <p>Securely handle patient communications, appointment reminders, and information requests with HIPAA-compliant AI.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Real Estate</h3>
+                    <p>Automate property inquiries, showing confirmations, and follow-ups with AI that knows your listings and market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </div>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about AutoEmailAI</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does AutoEmailAI work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>AutoEmailAI connects to your email accounts and uses advanced AI to analyze incoming messages, understand context, and generate appropriate responses based on your knowledge base and communication style.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my email data secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely. We use enterprise-grade encryption, secure OAuth authentication, and are fully GDPR and HIPAA compliant. Your data is encrypted both in transit and at rest.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I customize the AI responses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Definitely! You can customize the tone, style, and content of responses. The AI learns from your existing emails and can be trained with your specific knowledge base and brand voice.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Which email providers are supported?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We support all major email providers including Gmail, Outlook, and any provider with IMAP/SMTP support. Integration is quick and secure using OAuth 2.0.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What languages are supported?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>AutoEmailAI supports 30+ languages with automatic detection and can respond in the same language as the incoming email or any language you prefer.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I get early access?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simply fill out the form above to join our waitlist. Early access members get 10% off their first month, priority support, and exclusive beta features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-envelope"></i>
+                    <span>Get in Touch</span>
+                </div>
+                <h2>Ready to transform your email workflow?</h2>
+                <p>Have questions? Want to learn more? We're here to help!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>Get in touch with our team</p>
+                        <a href="mailto:stefanoskoufogazos@outlook.com" class="contact-link">Email</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>Schedule a Demo</h3>
+                        <p>Book a personalized demo</p>
+                        <a href="#notify-form" class="contact-link">Join Waitlist</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Early Access</h3>
+                        <p>Be first to try AutoEmailAI</p>
+                        <a href="#notify-form" class="contact-link">Get Notified</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <span class="logo-text">AutoEmailAI</span>
+                    </div>
+                    <p>The future of intelligent email automation is here.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#pricing-preview">Pricing</a>
+                        <a href="#how-it-works">How it Works</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Security</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:hello@autoemailai.com">Email Support</a>
+                        <a href="#faq">Help Center</a>
+                        <a href="#contact">Schedule Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoEmailAI. All rights reserved.</p>
+                <p>Made with ❤️ for better email communication</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Additional CSS for new sections -->
+    <style>
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #14B8A6;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14B8A6, #7C3AED);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: #14B8A6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #7C3AED;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #1E3A8A, #312E81);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #14B8A6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 30px;
+            background: #1F2937;
+            color: white;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            margin-top: 1rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #9CA3AF;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #14B8A6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9CA3AF;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+    <script>
+        // Notify Form Handler
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('successMessage');
+
+            // Add loading state
+            form.classList.add('loading');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Added to the waitlist…</span>';
+
+            // Collect form data
+            const formData = {
+                email: document.getElementById('email').value,
+                fullName: document.getElementById('fullName').value,
+                company: document.getElementById('company').value || 'Nicht angegeben',
+                role: document.getElementById('role').value || 'Nicht angegeben',
+                interest: document.getElementById('interest').value || 'Nicht angegeben',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                url: window.location.href,
+                type: 'waitlist_signup'
+            };
+
+            // Send to Flask backend
+            fetch('/submit_waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove loading state
+                form.classList.remove('loading');
+
+                if (data.success) {
+                    // Show success message
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    successMessage.querySelector('p').textContent = data.message;
+
+                    // Track signup
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'waitlist_signup', {
+                            event_category: 'engagement',
+                            event_label: formData.company || 'Individual'
+                        });
+                    }
+
+                    console.log('Waitlist signup successful:', formData);
+                } else {
+                    // Show error message
+                    alert('Fehler: ' + data.message);
+                    submitBtn.innerHTML = '<i class="fas fa-bell"></i><span>Notify Me at Launch</span>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                form.classList.remove('loading');
+                alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+                submitBtn.innerHTML = '<i class="fas fa-bell"></i><span>Notify Me at Launch</span>';
+            });
+        });
+
+        function sendNotification(formData) {
+            // This function is no longer needed as we send via Flask
+            // Keep for backward compatibility but it won't be called
+            console.log('Legacy sendNotification called');
+        }
+
+        // Form validation
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#EF4444';
+            } else {
+                this.style.borderColor = '#E5E7EB';
+            }
+        });
+
+        // Auto-fill company from email domain
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const companyField = document.getElementById('company');
+
+            if (email.includes('@') && !companyField.value) {
+                const domain = email.split('@')[1];
+                if (domain && domain !== 'gmail.com' && domain !== 'yahoo.com' && domain !== 'hotmail.com' && domain !== 'outlook.com') {
+                    const companyName = domain.split('.')[0];
+                    companyField.value = companyName.charAt(0).toUpperCase() + companyName.slice(1);
+                }
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (placeholder for future implementation)
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Add missing CSS styles dynamically
+        const additionalStyles = `
+            .pricing-preview {
+                padding: 80px 0;
+                background: #FFFFFF;
+            }
+            .pricing-cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            .pricing-card {
+                background: white;
+                border: 2px solid #E5E7EB;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                position: relative;
+                transition: all 0.3s ease;
+            }
+            .pricing-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            }
+            .pricing-card.featured {
+                border-color: #7C3AED;
+                box-shadow: 0 15px 35px rgba(124, 58, 237, 0.2);
+                transform: scale(1.05);
+            }
+            .pricing-badge {
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #7C3AED, #9333EA);
+                color: white;
+                padding: 0.5rem 1.5rem;
+                border-radius: 25px;
+                font-size: 0.8rem;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+            }
+            .pricing-tier {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1E3A8A;
+                margin-bottom: 1rem;
+            }
+            .pricing-price {
+                font-size: 3rem;
+                font-weight: 800;
+                color: #14B8A6;
+                margin-bottom: 1.5rem;
+            }
+            .pricing-period {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #6B7280;
+            }
+            .pricing-features {
+                list-style: none;
+                padding: 0;
+                margin: 2rem 0;
+                text-align: left;
+            }
+            .pricing-features li {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+                color: #374151;
+            }
+            .pricing-features i {
+                color: #10B981;
+                font-size: 0.9rem;
+                width: 16px;
+            }
+            .coming-soon-badge {
+                background: linear-gradient(135deg, #14B8A6, #7C3AED);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border-radius: 12px;
+                font-weight: 600;
+                margin-top: 1.5rem;
+                display: inline-block;
+            }
+            .industries {
+                padding: 80px 0;
+                background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+            }
+            .industries-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            .industry-card {
+                background: white;
+                border: 1px solid #E5E7EB;
+                border-radius: 16px;
+                padding: 2rem;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+            .industry-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                border-color: #14B8A6;
+            }
+            .industry-icon {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, #14B8A6, #7C3AED);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+                margin: 0 auto 1.5rem;
+            }
+            .industry-card h3 {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #1E3A8A;
+                margin-bottom: 1rem;
+            }
+            .industry-card p {
+                color: #6B7280;
+                line-height: 1.6;
+            }
+            .faq {
+                padding: 80px 0;
+                background: #FFFFFF;
+            }
+            .faq-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .faq-item {
+                border: 1px solid #E5E7EB;
+                border-radius: 12px;
+                margin-bottom: 1rem;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .faq-item:hover {
+                border-color: #14B8A6;
+            }
+            .faq-question {
+                width: 100%;
+                padding: 1.5rem;
+                background: white;
+                border: none;
+                text-align: left;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #1E3A8A;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.3s ease;
+            }
+            .faq-question:hover {
+                background: #F8FAFC;
+            }
+            .faq-question i {
+                transition: transform 0.3s ease;
+            }
+            .faq-item.active .faq-question i {
+                transform: rotate(180deg);
+            }
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                background: #F8FAFC;
+            }
+            .faq-item.active .faq-answer {
+                max-height: 200px;
+            }
+            .faq-answer p {
+                padding: 1.5rem;
+                margin: 0;
+                color: #6B7280;
+                line-height: 1.6;
+            }
+            @media (max-width: 768px) {
+                .pricing-cards {
+                    grid-template-columns: 1fr;
+                }
+                .pricing-card.featured {
+                    transform: none;
+                }
+                .industries-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        `;
+
+        // Add the styles to the head
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+
+        // Analytics tracking
+        function trackWaitlistSignup(formData) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_signup', {
+                    event_category: 'lead_generation',
+                    event_label: formData.company || 'Individual',
+                    custom_parameters: {
+                        company: formData.company,
+                        role: formData.role,
+                        interest: formData.interest
+                    }
+                });
+            }
+
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Waitlist Signup',
+                    content_category: 'AutoEmailAI Waitlist'
+                });
+            }
+
+            console.log('Waitlist signup tracked:', {
+                event: 'waitlist_signup',
+                data: formData
+            });
+        }
+    </script>
+</body>
+</html>
